@@ -1,1 +1,2 @@
 C:\Users\keega\source\repos\GADE7322 POE Keegan Forsman Jared Screen\GADE7322 POE Keegan Forsman Jared Screen\x64\Debug\GADE7322 POE Keegan Forsman Jared Screen.vcxproj.CopyComplete
+D:\OPENGL\GADE7322-POE\GADE7322 POE Keegan Forsman Jared Screen\x64\Debug\GADE7322 POE Keegan Forsman Jared Screen.vcxproj.CopyComplete
