@@ -4,7 +4,7 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 //#include <GL/glew.h>
-
+                                       //all the libraries we use
 #include "linmath.h/linmath.h"
 
 #include <stdlib.h>
@@ -32,11 +32,11 @@ int main()
 {
 	glfwInit();
 
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);//tells opengl what version and profile we use
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow* window = glfwCreateWindow(800, 800, "POE CHESS", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(800, 800, "POE CHESS", NULL, NULL);//Creates a window that is 800 pixels and names it
 	if (window == NULL)
 	{
 		std::cout << "Fail" << std::endl;
@@ -46,7 +46,7 @@ int main()
 
 	glfwMakeContextCurrent(window);
 
-	gladLoadGL();
+	gladLoadGL();//loads GLAD
 
 
 	glViewport(0, 0, 800, 800);
