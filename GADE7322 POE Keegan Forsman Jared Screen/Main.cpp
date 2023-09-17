@@ -5,25 +5,25 @@
 #include <GLFW/glfw3.h>
 //#include <GL/glew.h>
                                        //all the libraries we use
-#include "linmath.h/linmath.h"
+#include "linmath.h/linmath.h"//maths
 
-#include <stdlib.h>
+#include <stdlib.h>//standard library
 #include <stdio.h>
 
-#include <assimp/Importer.hpp>
+#include <assimp/Importer.hpp>//asset importer 
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
 
-#include <glm/glm.hpp>
+#include <glm/glm.hpp>//wrapper library
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <glm/gtc/type_ptr.hpp>
-#include <physx/PxPhysicsAPI.h>
+#include <physx/PxPhysicsAPI.h>//Physics
 
-#include <AL/alc.h>
+#include <AL/alc.h>//sound
 #include <AL/al.h>
 
-#include <nanogui/opengl.h>
+#include <nanogui/opengl.h>//GUI
 #include <nanogui/nanogui.h>
 
 #include <Windows.h>
