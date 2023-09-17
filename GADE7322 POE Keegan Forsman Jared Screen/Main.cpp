@@ -44,10 +44,11 @@ const char* fragmentShaderSource = "#version 330 core\n"
 "   FragColor = vec4(0.8f, 0.3f, 0.02f, 1.0f);\n"
 "}\n\0";
 
-
+int process_counter = 0;
 
 int main()
 {
+
 
 	glfwInit();
 
@@ -198,6 +199,29 @@ int main()
     std::cout << "Created " << numStrips * numTrisPerStrip << " triangles total" << std::endl;
 
 
+    // view/projection transformations
+    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100000.0f);
+    glm::mat4 view = camera.GetViewMatrix();
+    heightMapShader.setMat4("projection", projection);
+    heightMapShader.setMat4("view", view);
+
+    // world transformation
+    glm::mat4 model = glm::mat4(1.0f);
+    heightMapShader.setMat4("model", model);
+
+    //draw terrain
+    glBindVertexArray(terrainVAO);
+    for (unsigned strip = 0; strip < numStrips; strip++)
+    {
+        glDrawElements(GL_TRIANGLE_STRIP,   // primitive type
+            numTrisPerStrip + 2,   // number of indices to render
+            GL_UNSIGNED_INT,     // index data type
+            (void*)(sizeof(unsigned) * (numTrisPerStrip + 2) * strip)); // offset to starting index
+    }
+
+    glBindVertexArray(0);
+
+
     unsigned int terrainVAO, terrainVBO, terrainIBO; // first, configure the cube's VAO (and terrainVBO + terrainIBO)
     glGenVertexArrays(1, &terrainVAO);
     glBindVertexArray(terrainVAO);
@@ -248,5 +272,30 @@ int main()
 	glfwTerminate();
 	return 0;
 
+}
+
+void processInput(GLFWwindow* window)
+{
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
+
+    if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+        cb.setNewCameraPosition(process_counter);
+
+}
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int modifiers)
+{
+    if (action == GLFW_PRESS)
+    {
+        switch (key)
+        {
+        case GLFW_KEY_RIGHT:
+
+            break;
+        default:
+            break;
+        }
+    }
 }
 
